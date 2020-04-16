@@ -1,7 +1,8 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-    name: 'wordrelay-setting',
+    name: 'gugudan-setting',
     mode: 'development',
     devtool: 'eval',
     resolve: {
@@ -15,11 +16,24 @@ module.exports = {
             test: /\.jsx?/,
             loader: 'babel-loader',
             options: {
-                presets: ['@babel/preset-env', '@babel/preset-react'],
+                presets: [
+                    ['@babel/preset-env', {
+                        targets: {
+                            // 지원하는 브라우저
+                            // github.com/browerslist
+                            browsers: ['>5% in KR']
+                        },
+                        debug: true,
+                    }],
+                    '@babel/preset-react'
+                ],
                 plugins: ['@babel/plugin-proposal-class-properties']
             }
         }]
     },
+    plugins: [
+        new webpack.LoaderOptionsPlugin({ debug: true }),
+    ],
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'app.js'
