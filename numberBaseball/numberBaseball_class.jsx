@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import Try from './try_class';
 
 function getNumbers () {
@@ -66,18 +66,21 @@ class NumberBaseball extends Component {
                 })
             }
         }
+        this.inputRef.current.focus();
     }
 
     onChange = (e) => {
         this.setState({ value: e.target.value });
     }
 
+    inputRef = createRef();
+
     render() {
         return (
             <>
               <p>{this.state.result}</p>
               <form onSubmit={this.onSubmit}>
-                <input maxLength={4} value={this.state.value} onChange={this.onChange} />
+                <input ref={this.inputRef} maxLength={4} value={this.state.value} onChange={this.onChange} />
                 <button type="submit">확인</button>
               </form>
               <p>시도: {this.state.tries.length}</p>

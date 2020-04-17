@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Try from './try_hooks';
 
 function getNumbers () {
@@ -17,6 +17,8 @@ const NumberBaseball = () => {
     const [result, setResult] = useState('');
     const [answer, setAnswer] = useState(getNumbers());
     const [tries, setTries] = useState([]);
+    const inputRef = useRef(null);
+
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -51,6 +53,7 @@ const NumberBaseball = () => {
                 setValue('');
             }
         }
+        inputRef.current.focus();
     }
 
     const onChange = (e) => {
