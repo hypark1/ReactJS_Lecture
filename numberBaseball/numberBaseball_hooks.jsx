@@ -47,9 +47,7 @@ const NumberBaseball = () => {
                        ball += 1; 
                     }
                 }
-                setTries((prevTries) => {
-                    return [...prevTries.tries, { try: value, result: `${strike} 스트라이크, ${ball} 볼 입니다.` }]
-                })
+                setTries([...tries, { try: value, result: `${strike} 스트라이크, ${ball} 볼 입니다.` }])
                 setValue('');
             }
         }

@@ -1,13 +1,21 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-class Try extends Component {
+class Try extends PureComponent {
+    {/*
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        if (this.state.counter !== nextState.counter) {
+           return true;
+        }
+        return false;
+    }
+    */}
+
     render () {
+        const { tryInfo } = this.props;
         return (
-            <>
-                <li>
-                    {this.props.tryInfo.try} : {this.props.tryInfo.result}
-                </li>
-            </>
+            <li>
+                {tryInfo.try} : {tryInfo.result}
+            </li>
         )
     }
 }
