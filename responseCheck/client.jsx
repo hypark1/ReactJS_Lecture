@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { hot } from 'react-hot-loader/root';
 
-import responseCheck from './responseCheck_hooks';
+import responseCheck from './RSP';
 
 const Hot = hot(responseCheck);
 
