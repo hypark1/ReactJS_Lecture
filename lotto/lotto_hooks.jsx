@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'; 
+import React, { useState, useRef, useEffect, useMemo } from 'react'; 
 import Ball from './ball';
 
 function getWinNmbers() {
@@ -14,7 +14,10 @@ function getWinNmbers() {
 }
 
 const Lotto = () => {
-    const [winNumbers, setWinNumbers] = useState(getWinNmbers());
+    const lottoNumbers = useMemo(() => getWinNmbers(), []); // 마지막 배열에 값이 없으면 한번만 실행. 값 있으면 그 값이 변할때마다 실행.
+    // useMemo : 복잡한 함수 결과값을 기억
+    // useRef : 일반값을 기억
+    const [winNumbers, setWinNumbers] = useState(lottoNumbers);
     const [winBalls, setWinBalls] = useState([]);
     const [bonus, setBonus] = useState(null);
     const [redo, setRedo] = useState(false);
