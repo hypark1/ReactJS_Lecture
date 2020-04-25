@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react'; 
+import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react'; 
 import Ball from './ball';
 
 function getWinNmbers() {
@@ -53,13 +53,18 @@ const Lotto = () => {
     // 배열이 빈배열이면 componentDidMount
     // 배열에 요소가 있으면 componentDidMount, componentDidUpdate 둘다 수행
 
-    const onCLickRedo = () => {
+    const onCLickRedo = useCallback(() => {
         setWinNumbers(getWinNmbers());
         setWinBalls([]);
         setBonus(null);
         setRedo(false);
         timeouts.current = [];
-    }
+    }, [winNumbers])
+    //useCallback : 함수를 기억.
+    //              재렌더링되도 함수를 새로 생성하지않음.
+    //              안에서 state를 처음 할당된값으로 계속 기억하기때문에
+    //              바뀌어야하는 값을 마지막 배열에 넣어야한다.
+    // 자식컴포넌트에 함수 넘겨줄때는 꼭 useCallback 해야한다.
 
     return (
         <>
