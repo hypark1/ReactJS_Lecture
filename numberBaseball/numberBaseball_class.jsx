@@ -85,6 +85,15 @@ class NumberBaseball extends Component {
               </form>
               <p>시도: {this.state.tries.length}</p>
               <ul>
+                  {/*
+                  {(() => {
+                      const array = [];
+                      for (let i = 0; i < tries.length; i++) {
+                          array.push(<Try key={(i+1) + `번째`} tryInfo={v}/>);
+                      }
+                      return array;
+                  })()}
+                  */}
                   {this.state.tries.map((v, i) => {
                       return (
                           <Try key={(i+1) + `번째`} tryInfo={v}/>
