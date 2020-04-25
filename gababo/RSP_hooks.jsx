@@ -32,6 +32,7 @@ const RSP = () => {
             clearInterval(interval.current);
         }
     }, [imgCoord]);
+    // 여기 배열에 넣은 값이 바뀔때 useEffect가 실행된다.
 
     const changeHand = () => {
         if (imgCoord === rspCoords.바위) {
